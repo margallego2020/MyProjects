@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/c4d913e089.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>User Registration</title>
+</head>
+<body>
+    <h2>Crear cuenta</h2>
+    <form action="/user-register" method="POST">
+        <p>
+            <label for="user-register-name">Nombre:</label>
+            <br/>
+            <input type="text" name="user-register-name" id="user-register-name" required>
+        </p>
+        <p>
+            <label for="user-register-surname">Apellido:</label>
+            <br/>
+            <input type="text" name="user-register-surname" id="user-register-surname" required>
+        </p>
+        <p>
+            <label for="user-register-birthday">Fecha de nacimiento</label>
+            <br/>
+            <input type="date" name="user-register-birthday" id="user-register-birthday" required>
+        </p>
+        <p>
+            <label for="user-register-sex">Seleccione sexo:</label>
+            <br/>
+            <select name="user-register-sex" id="user-register-sex" required>
+                <option value="m" selected>Hombre</option>
+                <option value="f">Mujer</option>
+                <option value="b">No Binario</option>
+            </select>
+        </p>
+        <p>
+            <label for="user-register-avatar">Seleccione su avatar:</label>
+            <br/>
+            <input type="file" name="user-register-avatar" id="user-register-avatar" required>
+        </p>
+        <p>
+            <label for="user-register-email">Email:</label>
+            <br/>
+            <input type="email" name="user-register-email" id="user-register-email" required>
+        </p>
+        <p>
+            <label for="user-register-password">Contraseña</label>
+            <br/>
+            <input type="password" name="user-register-password" id="user-register-password" required>            
+        </p>
+        <p>
+            <label for="user-register-repassword">Repetir contraseña:</label>
+            <br/>
+            <input type="password" name="user-register-repassword" id="user-register-repassword" required>
+        </p>
+
+
+
+        <input type="checkbox" name="user-register-remember-user"  id="user-register-remember-user"required>
+        <label for="user-register-remember-user">Recordar usuario</label>
+        <br/>
+        <br/>
+        <a href="http://">¿Olvidó su usuario o contraseña?</a>
+        <br/>
+        <br/>
+        <button type="reset">Cancelar</button>
+        <button type="submit">Enviar</button>
+    </form>
+   
+    
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/c4d913e089.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Product Registration</title>
+</head>
+<body>
+    <h2>Registre su producto</h2>
+    <form action="/product-register" method="post">
+        <p>
+            <label for="product-register-title">Título:</label>
+            <br/>
+            <input type="text" name="product-register-title" id="product-register-title" required>
+        </p>
+        <p>
+            <label for="product-register-price">Precio:</label>
+            <br/>
+            <input type="text" name="product-register-price" id="product-register-price" required>
+        </p>
+        <p>
+            <label for="product-register-discount">Descuento:</label>
+            <br/>
+            <input type="text" name="product-register-discount" id="product-register-discount" required>
+        </p>
+        <p>
+            <label for="product-register-quantity">Unidades en stock:</label>
+            <br/>
+            <input type="number" name="product-register-quantity" id="product-register-quantity" required>
+        </p>
+        <p>
+            <label for="product-register-category">Categoría:</label>
+            <select name="product-register-category" id="product-register-category" required>
+                <option value="cars">Vehículos</option>
+                <option value="buildings">Inmuebles</option>
+                <option value="technology">Tecnología</option>
+                <option value="create">Crear nueva categoría</option>
+            </select>
+            <!-- Ver cómo agregar subcategorías dentro de cada categoría -->
+        </p>
+
+        <p>
+            <label for="product-register-photos">Foto/s de producto/s:</label>
+            <br/>
+            <input type="file" name="product-register-photos" id="product-register-photos" multiple required>
+        </p>
+
+
+        <p>
+            <label for="product-register-characteristics">Características:</label>
+            <br/>
+            <textarea name="product-register-characteristics" id="product-register-characteristics" cols="30" rows="10" required></textarea>
+           
+        </p>
+        <!-- Ver cómo seleccionar algunos y otro dejar. Lo hago como textarea ahora simple -->
+
+        <button type="reset">Cancelar</button>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
