@@ -7,51 +7,121 @@
     <!-- Register Form -->
 
     <div class="container my-5">
+        <!-- Si recibí en las variables locales errors, entonces listo todos los errores 
+            que mandé por el controlador -->
+        <% if (locals.errors) { %>
+            <% for( let oneError in errors ) { %>
+                <!-- Por los errores accedo a c/u de las propiedades y al campo msg de c/u -->
+                <p><%= errors[oneError].msg %></p>
+            <% } %>
+         
+        <% } %>
+        
         <div class="row justify-content-center">
             <div class="columns-md-10">
                 <h2>Formulario de registro</h2>
-
-                <form method="POST" action="/user/register">
+                <!-- Enctype sirve para procesar textos y archivos(multer) -->
+                <form method="POST" action="/user/register" enctype="multipart/form-data">
                     <div class="row">
                         <div class="columns-md-6 my-1">
                             <div class="form-group">
                                 <label><b>Nombre completo:</b></label>
-                                <input type="text" name="fullName" class="form-control">
-                                <div class="invalid-feedback">
-                                </div>
+                                <!-- Imprimo el ícono de inválido si hubo errores en locals según el valor 
+                                    ingresado -->
+                                <!-- Si en locals vino oldData, quiero que me 
+                                tome lo que trae ese campo que analizo de oldData -->
+                                <input 
+                                    type="text" 
+                                    name="fullName" 
+                                    class="form-control <%= locals.errors && errors.fullName ? "is-invalid" : null %>"
+                                    value="<%= locals.oldData ? oldData.fullName : null %>"
+                                >
+                                <!-- Voy a validar cuando venga por POST si hubo errores y si  
+                                para el campo de errores que analizo vino un error -->
+                                <% if (locals.errors && errors.fullName) { %>
+                                    <div class="text-danger">
+                                    <!-- <div class="invalid-feedback"> -->
+                                        <%= errors.fullName.msg %>
+                                        <!-- Acá va a ir el error -->
+                                    </div>
+                                <% } %>
                             </div>
                         </div>
                         <div class="columns-md-6 my-1">
                             <div class="form-group">
                                 <label><b>Correo electrónico:</b></label>
-                                <input type="text" name="email" class="form-control">
-                                <div class="invalid-feedback">
+                                <input 
+                                    type="text" 
+                                    name="email" 
+                                    class="form-control <%= locals.errors && errors.email ? "is-invalid" : null %>"
+                                    value="<%= locals.oldData ? oldData.email : null %>"
+                                >
+                                  <!-- Voy a validar cuando venga por POST si hubo errores y si  
+                                para el campo de errores que analizo vino un error -->
+                                <% if (locals.errors && errors.email) { %>
+                                    <div class="text-danger">
+                                    <!-- <div class="invalid-feedback"> -->
+                                        <%= errors.email.msg %>
+                                    </div>
+                                <% } %>
                                 </div>
                             </div>
                         </div>
                         <div class="columns-md-6 my-1">
                             <div class="form-group">
                                 <label><b>Password:</b></label>
-                                <input type="password" name="password" class="form-control">
-                                <div class="invalid-feedback">
-                                </div>
+                                <input 
+                                    type="password" 
+                                    name="password" 
+                                    class="form-control" <%= locals.errors && errors.password ? "is-invalid" : null %>
+                                >
+                                  <!-- Voy a validar cuando venga por POST si hubo errores y si  
+                                para el campo de errores que analizo vino un error -->
+                                <% if (locals.errors && errors.password) { %>
+                                    <div class="text-danger">
+                                    <!-- <div class="invalid-feedback"> -->
+                                        <%= errors.password.msg %>
+                                        <!-- Acá va a ir el error -->
+                                    </div>
+                                <% } %>
                             </div>
                         </div>
                         <div class="columns-md-6 my-1">
                             <div class="form-group">
                                 <label><b>País de nacimiento:</b></label>
-                                <select name="country" class="form-select">
+                                <select 
+                                    name="country" 
+                                    class="form-select <%= locals.errors && errors.country ? "is-invalid" : null %>"
+                                >
                                     <option value="">Elegí un país</option>
                                     <% 
                                         let countries = ["Argentina", "Bolivia", "Brasil", "Colombia", "Chile", 
                                         "Ecuador", "Paraguay", "Perú", "Uruguay", "Venezuela"];
                                     %>
+                                    <!-- Con selected hago que me quede seleccionado el último 
+                                        país que seleccioné -->
+                                    <!-- Quiero que me imprima si lo que vino en oldData corresponda 
+                                        con el país  -->
+                                    <!-- Si el país del listado de paises es igual a lo que vino en la
+                                    var oldData en la propiedad country, imprimo el atributo selected sino 
+                                    no quiero imprimir nada -->
+                                    <!-- Quiero imprimir sí y solo sí lo que vino en oldData se corresponde con el país -->
                                     <% for( const oneCountry of countries ) { %>
-                                        <option value="<%= oneCountry %>"> <%= oneCountry %> </option>
+                                        <option 
+                                            value="<%= oneCountry %>"
+                                            <%= locals.oldData && (oneCountry === oldData.country) ? "selected" : null %>
+                                        > <%= oneCountry %> </option>
                                     <% } %>
                                 </select>
-                                <div class="invalid-feedback">
-                                </div>
+                                  <!-- Voy a validar cuando venga por POST si hubo errores y si  
+                                para el campo de errores que analizo vino un error -->
+                                <% if (locals.errors && errors.country) { %>
+                                    <div class="text-danger">
+                                    <!-- <div class="invalid-feedback"> -->
+                                        <%= errors.country.msg %>
+                                        <!-- Acá va a ir el error -->
+                                    </div>
+                                <% } %>
                             </div>
                         </div>
 
@@ -59,7 +129,15 @@
                             <div class="form-group">
                                 <label><b>Imagen de perfil:</b></label>
                                 <input class="form-control" type="file" name="avatar">
-                                <div class="invalid-feedback"></div>
+                                  <!-- Voy a validar cuando venga por POST si hubo errores y si  
+                                para el campo de errores que analizo vino un error -->
+                                <% if (locals.errors && errors.avatar) { %>
+                                    <div class="text-danger">
+                                    <!-- <div class="invalid-feedback"> -->
+                                        <%= errors.avatar.msg %>
+                                        <!-- Acá va a ir el error -->
+                                    </div>
+                                <% } %>
                             </div>
                         </div>
 

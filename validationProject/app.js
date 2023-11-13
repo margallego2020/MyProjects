@@ -5,6 +5,11 @@ const path = require('path');
 // Defino carpeta public como archivos estáticos
 app.use(express.static("./public"));
 
+// Permite capturar la info que recibo del formulario vía POST
+app.use(express.urlencoded({extended: false}));
+
+
+
 // Defino a ejs como template engine
 app.set("view engine", "ejs");
 // Defino la ubicación de la carpeta views
@@ -16,7 +21,7 @@ const userRoutes = require("./routes/userRoutes");
 
 // Defino los links de las rutas
 app.use("/", mainRoutes);
-app.use("/users", userRoutes);
+app.use("/user", userRoutes);
 
 
 // Si hay un error le digo que busque la página de error
