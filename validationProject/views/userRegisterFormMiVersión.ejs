@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include("./partials/head"); %>
+<body>
+    <%- include("./partials/navbar"); %>
+    
+    <!-- Register Form -->
+
+    <h1>Formulario de registro</h1>
+    <form class="row g-3">
+        <div class="col-md-6">
+          <label for="inputNombreCompleto" class="form-label">Nombre completo:</label>
+          <input type="text" class="form-control" id="inputNombreCompleto">
+        </div>
+        <div class="col-md-6">
+          <label for="inputEmail" class="form-label">Email:</label>
+          <input type="email" class="form-control" id="inputEmail">
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Password:</label>
+          <input type="password" class="form-control" id="inputPassword4">
+        </div>
+        <div class="col-md-6">
+            <label for="inputCountry" class="form-label">País de nacimiento:</label>
+            <select id="inputState" class="form-select">
+              <option selected>Elegí un país</option>
+              <option>...</option>
+            </select>
+        </div>
+
+        <div class="md-3">
+            <label for="formFile" class="form-label">Image de perfil:</label>
+            <input class="form-control" type="file" id="formFile">
+        </div>
+
+        <div class="col-auto">
+            <button class="btn btn-primary" type="submit">Registrarse</button>
+        </div>
+    </form>
+
+
+    <%- include("./partials/footer") %>
+
+</body>
+</html>

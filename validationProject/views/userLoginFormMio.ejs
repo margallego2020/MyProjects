@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./partials/head") %>
+<body>
+    <%- include("./partials/navbar") %>
+    <h3>Formulario de Login</h3>
+    
+    <div class="row g-2">
+        <div class="col-md">
+            <label for="formGroupExampleInput" class="form-label"><b>Correo electrónico</b></label>
+            <input type="email" class="form-control" id="formGroupExampleInput">          
+        </div>
+        <div class="col-md">
+            <label for="formGroupExampleInput2" class="form-label"><b>Password</b></label>
+            <input type="password" class="form-control" id="formGroupExampleInput2">
+        </div>
+      </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
+        Recordar mi usuario
+      </label>
+    </div>
+
+    <!-- <input class="btn btn-primary" type="submit" value="Cancelar"> -->
+    <!-- NO VA <input class="btn btn-primary" type="reset" value="Registrarse"> -->
+    <button class="btn btn-primary" type="submit">Registrarse</button>
+
+    <%- include("./partials/footer") %>
+
+</body>
+</html>
