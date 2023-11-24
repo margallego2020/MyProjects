@@ -1,0 +1,41 @@
+
+<%- include("header") %>
+  <h1><%=pelicula.title%></h1>
+  <ul>
+    <li>
+        Duración: <%=pelicula.length%>
+    </li>
+    <li>
+        Fecha de estreno: <%=pelicula.release_date%>
+    </li>
+    <li>
+        Premios: <%=pelicula.awards%>
+    </li>
+    <li>
+        Rating: <%=pelicula.rating%>
+    </li>
+    <!-- Ahora traigo el género
+    Obtengo la relación del género y del género pido el nombre -->
+    <li>
+        Genero: <%=pelicula.genero.name%>
+    </li>
+    <li>
+        Actores: 
+        <!-- Como los actores pueden ser muchos hago un for tomando desde el principio
+        hasta la cantidad de actores que tenga la pelicula -->
+        <ul>
+            <% for( let i = 0; i < pelicula.actores.length; i++ ) { %>
+                <li><%=pelicula.actores[i].first_name%> <%=pelicula.actores[i].last_name%></li>
+            <% } %>
+        </ul>
+    </li>
+  </ul>
+  
+  <a href="/peliculas/editar/<%=pelicula.id%>">
+      <button>Editar</button>
+  </a>
+  <form action="/peliculas/borrar/<%=pelicula.id%>" method="POST">
+    <button type="submit">Borrar</button>
+  </form>
+  
+<%- include("footer") %>

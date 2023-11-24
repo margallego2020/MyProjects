@@ -1,0 +1,43 @@
+<%- include("header") %>
+
+    <h1>Crear pelicula</h1>
+    <form action="/peliculas/crear" method="post">
+        <div>
+            <label for="">Titulo</label>
+            <input type="text" name="titulo">
+        </div>
+        <div>
+            <label for="">Premios</label>
+            <input type="text" name="premios">
+        </div>
+        <div>
+            <label for="">Duración</label>
+            <input type="text" name="duracion">
+        </div>
+        <div>
+            <label for="">Rating</label>
+            <input type="text" name="rating">
+        </div>
+        <div>
+            <label for="">Fecha de estreno</label>
+            <input type="date" name="fecha_estreno">
+        </div>
+        <div>
+            <label for="">Genero</label>
+            <select name="genero">
+                <!-- Por cada option quiero que me traiga lo que trae la BD -->
+                    <% for( let i = 0; i < generos.length; i++ ) { %>
+                        <!-- Imprime el id -->
+                        <option value="<%=generos[i].id%>"> 
+                            <!-- Imprime el nombre de la columna de la BD -->
+                            <%= generos[i].name %>
+                        </option>    
+                    <% } %>
+            </select>
+        </div>
+
+        <!-- Botón de enviado -->
+        <button type="submit">Crear!</button>
+    </form>
+
+<%- include("footer") %>

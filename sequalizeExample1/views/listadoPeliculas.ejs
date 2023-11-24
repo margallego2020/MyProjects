@@ -1,0 +1,16 @@
+
+<%- include("header") %>
+    <h1>Listado de peliculas</h1>
+    <ul>
+        <!-- Pongo un for porque no sé cuántas peliculas puede haber -->
+        <% for( let i = 0; i < peliculas.length; i++ ) { %>
+            <li>
+                <!-- Con el id de la pelicula Lo linkeo al link de la pelicula que corresponde  -->
+                <a href="/peliculas/<%= peliculas[i].id %>">
+                    <%= peliculas[i].title %>
+                </a>
+            </li>
+        <% } %>
+    </ul>
+
+<%- include("footer") %>

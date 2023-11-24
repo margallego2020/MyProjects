@@ -1,0 +1,55 @@
+<%- include("header") %>
+
+    <h1>Editar pelicula</h1>
+    <form action="/peliculas/editar/<%=pelicula.id%>" method="post">
+        <div>
+            <label for="">Titulo</label>
+            <input type="text" name="titulo" value="<%=pelicula.title%>">
+        </div>
+        <div>
+            <label for="">Premios</label>
+            <input type="text" name="premios" value="<%=pelicula.awards%>">
+        </div>
+        <div>
+            <label for="">Duración</label>
+            <input type="text" name="duracion" value="<%=pelicula.length%>">
+        </div>
+        <div>
+            <label for="">Rating</label>
+            <input type="text" name="rating" value="<%=pelicula.rating%>">
+        </div>
+        <div>
+            <label for="">Fecha de estreno</label>
+            <input type="date" name="fecha_estreno">
+        </div>
+        <div>
+            <label for="">Genero</label>
+            <select name="genero">
+                <!-- Por cada option quiero que me traiga lo que trae la BD -->
+                    <% for( let i = 0; i < generos.length; i++ ) { %>
+                        <!--  Para tomar el valor que traía de antes-->
+                        <!-- Si el género que estoy por imprimir es el mismo que tiene la pelicula -->
+                        <% if (generos[i].id == pelicula.genre_id) { %>
+                            
+                            <!-- Imprime el id que ya había seleccionado antes con selected-->
+                            <option value="<%=generos[i].id%>" selected> 
+                            <!-- Imprime el nombre de la columna de la BD -->
+                            <%=generos[i].name%>
+                        <% } else { %>
+                            <!-- Sino sin selected -->
+                            <!-- Imprime el id -->
+                            <option value="<%=generos[i].id%>"> 
+                                <!-- Imprime el nombre de la columna de la BD -->
+                                <%=generos[i].name%>
+                            </option> 
+                        <% } %>
+                           
+                    <% } %>
+            </select>
+        </div>
+
+        <!-- Botón de enviado -->
+        <button type="submit">Editar!</button>
+    </form>
+
+<%- include("footer") %>
